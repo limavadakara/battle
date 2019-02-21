@@ -27,9 +27,9 @@ enable :sessions
    @player_1 = session[:player_1]
    @player_2 = session[:player_2]
    @player_2_hit_point = 10
-   @attack_confirmation = "Player 2 attacked successfully!"
+   @attack_confirmation = "#{@player_1} attacked #{@player_2}!"
    erb(:play)
-   
+
  end
  run! if app_file == $0
 end
