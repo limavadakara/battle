@@ -24,10 +24,13 @@ enable :sessions
  end
 
  post "/attack"  do
+   p params
    @player_1 = session[:player_1]
    @player_2 = session[:player_2]
    @player_2_hit_point = 10
-   @attack_confirmation = "#{@player_1} attacked #{@player_2}!"
+   @attack_button_clicked = params[:attack_button]
+   @attack_confirmation = "#{@player_1} attacked #{@player_2}!" if @attack_button_clicked
+
    erb(:play)
 
  end
