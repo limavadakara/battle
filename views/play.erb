@@ -6,3 +6,9 @@
   <%= @player_2_hit_point.to_s %>
 
 </div>
+
+<form action = "/attack" method = "POST">
+  <button type="submit" name="attack">Attack</button>
+</form>
+
+<%= @attack_confirmation if @attack_confirmation != nil %>
