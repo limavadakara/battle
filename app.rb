@@ -17,6 +17,7 @@ enable :sessions
  get "/play" do
    @player_1 = session[:player_1]
    @player_2 = session[:player_2]
+   @player_2_hit_point = 10
    erb(:play)
  end
  run! if app_file == $0
