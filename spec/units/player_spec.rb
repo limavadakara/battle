@@ -4,6 +4,6 @@ describe Player do
     name = "A Name"
     player = Player.new(name)
     expect(player.name).to equal name
-    expect(player.hp).to eq 0
+    expect(player.hp).to eq Player::INITIAL_HIT_POINTS
   end
 end
