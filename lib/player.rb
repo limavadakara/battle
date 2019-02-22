@@ -8,10 +8,6 @@ class Player
     @hp = INITIAL_HIT_POINTS
   end
 
-  def attack(opponent)
-    opponent.be_attacked
-  end
-
   def be_attacked
     @hp -= 10
   end
