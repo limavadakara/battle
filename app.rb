@@ -33,6 +33,7 @@ enable :sessions
    @player_2 = session[:player_2]
 
    @attack_button_clicked = params[:attack_button]
+   @player_1.attack(@player_2)
    @attack_confirmation = "#{@player_1.name} attacked #{@player_2.name}!" if @attack_button_clicked
 
    erb(:play)
