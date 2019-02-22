@@ -28,7 +28,7 @@ enable :sessions
  end
 
  post "/attack"  do
-   p params
+   
    @player_1 = session[:player_1]
    @player_2 = session[:player_2]
 

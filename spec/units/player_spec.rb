@@ -1,17 +1,23 @@
 require 'player.rb'
 describe Player do
-  let(:player_2) { Player.new("Elephant") }
+  player_2 = Player.new("Elephant")
   name = "Ant"
   player = Player.new(name)
-  it 'Gets created with a name and a HP of 0' do
+  it 'Gets created with a name and default HP' do
 
     expect(player.name).to equal name
     expect(player.hp).to eq Player::INITIAL_HIT_POINTS
   end
 
-  it 'Reduces the opponent hit points by 10' do
-
-    expect { player.attack(player_2) }.to change { player_2.hp }.by(-10)
+  it 'Attacks the opponent' do
+    expect(player_2).to receive(:be_attacked)
+    player.attack(player_2)
 
   end
+
+  it "Reduces its hit points by 10 when attacked" do
+    expect { player_2.be_attacked }.to change { player_2.hp }.by(-10)
+
+  end
+
 end
