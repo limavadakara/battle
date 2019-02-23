@@ -14,4 +14,15 @@ describe Game do
     subject.attack(player1)
 
   end
+
+  it 'Should switch turns for the players. Game starts with turn for player 1' do
+    expect(game.current_turn).to equal player1
+
+  end
+
+  it 'Should switch turns for the players after attack' do
+    expect(player2).to receive(:be_attacked)
+    game.attack(player2)
+    expect(game.current_turn).to eq player2
+  end
 end

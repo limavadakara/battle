@@ -12,4 +12,8 @@
   <button type="submit" name = "attack_button" value="attack">Attack</button>
 </form>
 
+<p>
+  <%= @game.current_turn.name %>'s turn
+</p>
+
 <%= @attack_confirmation if @attack_confirmation != nil %>

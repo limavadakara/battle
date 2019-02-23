@@ -7,10 +7,12 @@ class Battle < Sinatra::Base
 enable :sessions
 
  get "/" do
+   
    erb(:index)
  end
 
  post "/names" do
+
    $game = Game.new(Player.new(params[:player_1_name]),
                     Player.new(params[:player_2_name])
                    )
@@ -18,9 +20,9 @@ enable :sessions
  end
 
  get "/play" do
-
    @game = $game
    @attack_confirmation = ""
+   @game.current_turn.name
    erb(:play)
 
  end
