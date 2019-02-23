@@ -2,18 +2,23 @@
   <%= @game.player1.name %> vs. <%= @game.player2.name %>
 </h2>
 
-<div id = "player_2_details">
-
-  <%= @game.player2.hp.to_s %>
-
+<div id = "player_1_details">
+  <h3><%= @game.player1.name%>'s Details </h3>
+    <p>Hit Points<%= @game.player1.hp.to_s %></p>
 </div>
 
-<form action = "/attack" method = "POST">
-  <button type="submit" name = "attack_button" value="attack">Attack</button>
-</form>
-
-<p>
+<div id = "player_2_details">
+  <h3><%= @game.player2.name%>'s Details </h3>
+    <p>Hit Points<%= @game.player2.hp.to_s %></p>
+</div>
+<br>
+  <form action = "/attack" method = "POST">
+    <button type="submit" name = "attack_button" value="attack">Attack</button>
+  </form>
+</br>
+<br>
+  <%= @attack_confirmation if @attack_confirmation != nil %>
+</br>
+<br>
   <%= @game.current_turn.name %>'s turn
-</p>
-
-<%= @attack_confirmation if @attack_confirmation != nil %>
+</br>

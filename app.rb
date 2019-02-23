@@ -1,13 +1,14 @@
 require 'sinatra/base'
 require_relative 'lib/player'
 require_relative 'lib/game'
+require_relative 'lib/attack'
 
 class Battle < Sinatra::Base
 
 enable :sessions
 
  get "/" do
-   
+
    erb(:index)
  end
 
@@ -31,9 +32,9 @@ enable :sessions
 
    @game = $game
    @attack_button_clicked = params[:attack_button]
-   @game.attack(@game.player2)
-   @attack_confirmation = "#{@game.player1.name} attacked #{@game.player2.name}!" if @attack_button_clicked
-
+   Attack.run(@game.opponent_of(@game.current_turn))
+   @attack_confirmation = "#{@game.current_turn.name} attacked #{@game.opponent_of(@game.current_turn).name}!" if @attack_button_clicked
+   @game.switch_turns
    erb(:play)
 
  end

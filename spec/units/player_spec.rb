@@ -7,6 +7,7 @@ describe Player do
 
     expect(player.name).to equal name
     expect(player.hp).to eq Player::INITIAL_HIT_POINTS
+    
   end
 
   it "Reduces its hit points by 10 when attacked" do
