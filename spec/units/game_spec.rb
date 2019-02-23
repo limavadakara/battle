@@ -21,5 +21,7 @@ describe Game do
   it 'returns the opponent of the player that has the current turn' do
     expect(game.opponent_of(game.current_turn)).to equal player2
   end
-  
+
+
+
 end

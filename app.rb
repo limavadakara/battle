@@ -14,26 +14,29 @@ enable :sessions
 
  post "/names" do
 
-   $game = Game.new(Player.new(params[:player_1_name]),
-                    Player.new(params[:player_2_name])
-                   )
+   @game = Game.create(Player.new(params[:player_1_name]),
+                    Player.new(params[:player_2_name]))
    redirect "/play"
  end
 
+before do
+  @game = Game.instance
+end
+
  get "/play" do
-   @game = $game
+
    @attack_confirmation = ""
-   @game.current_turn.name
    erb(:play)
 
  end
 
  post "/attack"  do
 
-   @game = $game
+
    @attack_button_clicked = params[:attack_button]
    Attack.run(@game.opponent_of(@game.current_turn))
    @attack_confirmation = "#{@game.current_turn.name} attacked #{@game.opponent_of(@game.current_turn).name}!" if @attack_button_clicked
+
    @game.switch_turns
    erb(:play)
 
